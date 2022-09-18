@@ -1,0 +1,110 @@
+@import '../../scss/variables';
+
+.background {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 0;
+    background-size: cover;
+    background-position: center;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        background-color: rgba(0,0,0,0.7);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+}
+
+.back_btn {
+    
+}
+
+.movie {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 75px;
+    color: #fff;
+
+    @media screen and(max-width:1000px) {
+        flex-direction: column-reverse;
+    }
+}
+
+.main_info {
+    
+}
+
+.title {
+    margin: 15px 0 10px;
+    font-size: 70px;
+    font-weight: 600;
+}
+
+.tagline {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.caption {
+    margin: 15px 0 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 20px;
+    color: $secondary-gray;
+    text-transform: uppercase;
+}
+
+.rating {
+    margin: 15px 0 10px;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.rating_description {
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    line-height: 20px;
+}
+
+.image {
+
+    margin-left: 25px;
+    flex: 1 0 30%;
+
+    @media screen and(max-width:1000px) {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        max-width: 100%;
+        border-radius: 2rem;
+    }
+}
+
+.recommendations {
+    margin-top: 25px;
+}
+
+.recommendations_title {
+    margin-top: 2rem;
+    font-size: 42px;
+    color: #fff;
+
+    @media screen and(max-width:460px) {
+        word-break: break-all;
+        font-size: 32px;
+    }
+}

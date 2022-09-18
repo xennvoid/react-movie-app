@@ -1,0 +1,32 @@
+.footer {
+    margin: 140px auto 50px;
+    max-width: 500px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+
+    @media screen and (max-width: 450px){
+        flex-direction: column;
+    }
+}
+
+.copyright {
+    margin-top: 35px;
+    text-align: center;
+}

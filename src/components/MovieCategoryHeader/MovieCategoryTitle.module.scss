@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+
+    @media screen and(max-width:560px) {
+        text-align: center;
+        flex-direction: column;
+    }
+}
+
+
+.category {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 56px;
+    color: #FFFFFF;
+}
+
+.link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #02ff7f;
+    cursor: pointer;
+
+    @media screen and(max-width:560px) {
+        margin-top: 1rem;
+    }
+}

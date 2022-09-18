@@ -1,0 +1,41 @@
+.movie_card {
+
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    img {
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+
+        &:hover {
+            box-shadow: 0 0 20px 0 #3b4d7d;
+        }
+    }
+}
+
+.description {
+    padding-top: 35px;
+}
+
+.year {
+    margin-top: auto;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #9CA3AF;
+}
+
+.title {
+    margin-top: 8px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+

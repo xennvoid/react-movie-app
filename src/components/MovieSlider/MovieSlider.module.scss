@@ -1,0 +1,45 @@
+.container {
+    
+}
+
+.slider_image {
+    min-height: 700px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slider_image::before {
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.description {
+    position: relative;
+    padding: 8rem 2rem 2rem;
+    max-width: 800px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.title {
+    font-size: 56px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 18px
+}
+
+.overview {
+    margin: 20px 0;
+    line-height: 20px;
+    font-size: 16px;
+    text-align: justify;
+}
