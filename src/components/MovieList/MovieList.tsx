@@ -23,9 +23,12 @@ interface Props {
 
 const MovieList: React.FC<Props> = ({ listName, url, simplified = false, movieType }) => {
 
-    const { data: movieList, isFetching } = useGetMovieListQuery({ url });
+    const { data: movieList, isFetching, isLoading } = useGetMovieListQuery({ url });
 
     const sliderBreakPoints = { 320: { slidesPerView: 1 }, 560: { slidesPerView: 2 }, 850: { slidesPerView: 3 }, 1000: { slidesPerView: 4 } };
+
+    if (isLoading)
+        return null;
 
     return (
         <div className={styles.container} >

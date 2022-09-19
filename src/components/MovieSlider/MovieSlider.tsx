@@ -12,14 +12,20 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination } from "swiper";
 import Button from '../UI/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/typedHooks';
 
 const MovieSlider: React.FC = () => {
 
     const navigate = useNavigate();
 
+    const { query } = useAppSelector(state => state.query)
+
     const { data: moviesList } = useGetMovieListQuery({ url: 'movie/popular' });
 
     const movieType = 'movie';
+
+    if (query.length !== 0)
+        return null;
 
     return (
         <div className={styles.container}>

@@ -20,7 +20,6 @@ const FullMovieList: React.FC = () => {
     const [movies, setMovies] = useState<Movie[] | []>([])
     const { data, isLoading } = useGetMovieListQuery({ url: category + "/" + movietype, page: currentPage })
 
-    console.log(category)
 
     useEffect(() => {
         window.scrollTo(0, 0)

@@ -7,11 +7,8 @@ import { useGetMovieByIdQuery } from '../../redux/services/movieApi';
 import timeConvert from '../../utils/MinsToMinsAndHours';
 import styles from './SingleMovie.module.scss';
 
-type Props = {
 
-}
-
-const SingleMovie: React.FC<Props> = () => {
+const SingleMovie: React.FC = () => {
 
     const navigate = useNavigate();
 
@@ -23,14 +20,13 @@ const SingleMovie: React.FC<Props> = () => {
 
     const releaseDate = new Date(`${movie?.release_date || movie?.first_air_date}`);
 
-    console.log(movie)
-
     useEffect(() => {
         window.scrollTo(0, 0);
-    },)
+    })
 
     if (isLoading)
         return null;
+
 
     return (
         <div className={styles.background} style={{ backgroundImage: `url(${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path})` }}>
@@ -88,10 +84,10 @@ const SingleMovie: React.FC<Props> = () => {
                                     </h3>
                                     <MovieList listName="Similar" url={`${movieType}/${id}/similar`} movieType={movieType} simplified />
 
-                                    <h3 className={styles.recommendations_title}>
+                                    {/* <h3 className={styles.recommendations_title}>
                                         Recommendations
                                     </h3>
-                                    <MovieList listName="Recommendations" url={`${movieType}/${id}/recommendations`} movieType={movieType} simplified />
+                                    <MovieList listName="Recommendations" url={`${movieType}/${id}/recommendations`} movieType={movieType} simplified /> */}
                                 </>
                         }
                     </div>
