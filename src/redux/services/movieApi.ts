@@ -18,7 +18,6 @@ export const movieApi = createApi({
                     api_key: apiKey,
                     page: page ? page : '1',
                 },
-                transformResponse: (response: MovieResponse) => response.results
             }),
         }),
         getMovieByName: builder.query<MovieResponse, string>({

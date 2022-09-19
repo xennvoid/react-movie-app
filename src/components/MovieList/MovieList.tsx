@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper";
+import CardSkeleton from '../UI/CardSkeleton/CardSkeleton';
 
 interface Props {
     listName: string;
@@ -25,9 +26,6 @@ const MovieList: React.FC<Props> = ({ listName, url, simplified = false, movieTy
     const { data: movieList, isFetching } = useGetMovieListQuery({ url });
 
     const sliderBreakPoints = { 320: { slidesPerView: 1 }, 560: { slidesPerView: 2 }, 850: { slidesPerView: 3 }, 1000: { slidesPerView: 4 } };
-
-    if (isFetching)
-        return null;
 
     return (
         <div className={styles.container} >
@@ -51,10 +49,13 @@ const MovieList: React.FC<Props> = ({ listName, url, simplified = false, movieTy
                 style={{ padding: "1rem" }}
             >
                 {
-                    movieList?.results.map(movie =>
-                        <SwiperSlide key={movie.id}>
-                            <MovieCard movie={movie} movieType={movieType} />
-                        </SwiperSlide>)
+                    isFetching
+                        ? <>{[...new Array(4)].map((_, i) => <CardSkeleton key={i} />)}</>
+                        :
+                        movieList?.results.map(movie =>
+                            <SwiperSlide key={movie.id}>
+                                <MovieCard movie={movie} movieType={movieType} />
+                            </SwiperSlide>)
                 }
             </Swiper >
         </div >
