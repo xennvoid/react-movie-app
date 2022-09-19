@@ -3,18 +3,29 @@ import { MovieById } from '../../types/movieByIdType';
 import { MovieResponse } from '../../types/movieTypes';
 
 
+const apiKey = process.env.REACT_APP_API_KEY;
+
 export const movieApi = createApi({
     reducerPath: 'movieApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://api.themoviedb.org/3',
+    }),
     endpoints: (builder) => ({
         getMovieList: builder.query<MovieResponse, { url: string, page?: number }>({
-            query: ({ url, page }) => `${url}?api_key=8c2c836e5c2e4fe7d6d0996bb92f2766&language=en-US${page ? "&page=" + page : ''}`,
+            query: ({ url, page }) => ({
+                url: `${url}`,
+                params: {
+                    api_key: apiKey,
+                    page: page ? page : '1',
+                },
+                transformResponse: (response: MovieResponse) => response.results
+            }),
         }),
         getMovieByName: builder.query<MovieResponse, string>({
-            query: (query) => query.length > 0 ? `/search/movie?api_key=8c2c836e5c2e4fe7d6d0996bb92f2766&language=en-US${query ? "&query=" + query : ""}` : '',
+            query: (query) => query.length > 0 ? `/search/movie?api_key=${apiKey}&language=en-US${query ? "&query=" + query : ""}` : '',
         }),
         getMovieById: builder.query<MovieById, { movieType: string, movie_id: string }>({
-            query: ({ movieType, movie_id }) => `/${movieType}/${movie_id}?api_key=8c2c836e5c2e4fe7d6d0996bb92f2766&language=en-US`,
+            query: ({ movieType, movie_id }) => `/${movieType}/${movie_id}?api_key=${apiKey}&language=en-US`,
         }),
     }),
 })

@@ -8,7 +8,7 @@ interface Props {
     movieType?: string;
 }
 
-const MovieCategoryTitle: React.FC<Props> = ({ listName, to, movieType }) => {
+const MovieCategoryTitle: React.FC<Props> = ({ listName, to }) => {
 
     const navigate = useNavigate()
 
