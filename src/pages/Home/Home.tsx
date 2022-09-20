@@ -26,7 +26,9 @@ const Home: React.FC = () => {
                         query.length > 0
                             ?
                             <div className={styles.movie_list}>
-                                {searchedMovieList?.results.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+                                {
+                                    searchedMovieList?.results.map(movie => <MovieCard key={movie.id} movie={movie} movieType="movie" />)
+                                }
                             </div>
                             : movieLists.map((list, i) => <MovieList key={i} listName={list.name} url={list.url} movieType={list.type} />)
                     }

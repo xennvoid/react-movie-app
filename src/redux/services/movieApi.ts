@@ -21,10 +21,10 @@ export const movieApi = createApi({
             }),
         }),
         getMovieByName: builder.query<MovieResponse, string>({
-            query: (query) => query.length > 0 ? `/search/movie?api_key=${apiKey}&language=en-US${query ? "&query=" + query : ""}` : '',
+            query: (query) => query.length > 0 ? `/search/movie?api_key=${apiKey}&language=en-US${query ? "&query=" + query : ""} ` : '',
         }),
         getMovieById: builder.query<MovieById, { movieType: string, movie_id: string }>({
-            query: ({ movieType, movie_id }) => `/${movieType}/${movie_id}?api_key=${apiKey}&language=en-US`,
+            query: ({ movieType, movie_id }) => `/${movieType}/${movie_id}?api_key=${apiKey}&language=en-US&append_to_response=videos`,
         }),
     }),
 })

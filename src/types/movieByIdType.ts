@@ -31,7 +31,8 @@ export interface MovieById {
     type?: string;
     vote_average: number;
     vote_count: number;
-    belongs_to_collection?: any;
+    videos: Videos;
+    belongs_to_collection?: Belongstocollection;
     budget?: number;
     imdb_id?: string;
     original_title?: string;
@@ -40,6 +41,30 @@ export interface MovieById {
     runtime?: number;
     title?: string;
     video?: boolean;
+}
+
+interface Belongstocollection {
+    id: number;
+    name: string;
+    poster_path: string;
+    backdrop_path: string;
+}
+
+interface Videos {
+    results: Result[];
+}
+
+interface Result {
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    key: string;
+    site: string;
+    size: number;
+    type: string;
+    official: boolean;
+    published_at: string;
+    id: string;
 }
 
 interface Spokenlanguage {

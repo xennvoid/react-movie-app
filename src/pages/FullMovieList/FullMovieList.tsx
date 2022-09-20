@@ -43,7 +43,7 @@ const FullMovieList: React.FC = () => {
                         <>
                             {[...new Array(10)].map((_, i) => <CardSkeleton key={i} />)}
                         </>
-                        : movies.map(movie => <MovieCard key={movie.id} movie={movie} movieType={category} />)
+                        : movies.map(movie => <MovieCard key={movie.id} movie={movie} movieType={category || 'movie'} />)
                 }
             </div>
             {

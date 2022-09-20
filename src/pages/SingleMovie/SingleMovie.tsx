@@ -7,6 +7,7 @@ import { useGetMovieByIdQuery } from '../../redux/services/movieApi';
 import timeConvert from '../../utils/MinsToMinsAndHours';
 import styles from './SingleMovie.module.scss';
 
+const videoUrl = 'https://www.youtube.com/embed/';
 
 const SingleMovie: React.FC = () => {
 
@@ -24,9 +25,10 @@ const SingleMovie: React.FC = () => {
         window.scrollTo(0, 0);
     })
 
+    const trailer = movie?.videos.results.find(movie => movie.type.toLowerCase() === 'trailer')
+
     if (isLoading)
         return null;
-
 
     return (
         <div className={styles.background} style={{ backgroundImage: `url(${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path})` }}>
@@ -73,6 +75,19 @@ const SingleMovie: React.FC = () => {
                             <img src={'https://image.tmdb.org/t/p/w500' + movie?.poster_path} alt="movie" />
                         </div>
                     </div>
+                    {
+                        movie?.videos?.results?.length != 0
+                        &&
+                        (<div className={styles.trailer}>
+                            <iframe
+                                src={`${videoUrl + trailer?.key}`}
+                                title={`${trailer?.name}`}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                frameBorder={0}
+                            >
+                            </iframe>
+                        </div>)
+                    }
                     <div className={styles.recommendations}>
                         {
                             isFetching
@@ -93,7 +108,7 @@ const SingleMovie: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

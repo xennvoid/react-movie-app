@@ -57,7 +57,7 @@ const MovieList: React.FC<Props> = ({ listName, url, simplified = false, movieTy
                         :
                         movieList?.results.map(movie =>
                             <SwiperSlide key={movie.id}>
-                                <MovieCard movie={movie} movieType={movieType} />
+                                <MovieCard movie={movie} movieType={movieType || 'movie'} />
                             </SwiperSlide>)
                 }
             </Swiper >

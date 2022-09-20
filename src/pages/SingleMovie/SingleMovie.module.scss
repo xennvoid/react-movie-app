@@ -94,6 +94,19 @@
     }
 }
 
+.trailer {
+    margin: 2rem 0;
+
+    iframe {
+        width: 100%;
+        height:70vh;
+
+        @media screen and (max-width:500px){
+            height: 40vh;
+        }
+    }
+}
+
 .recommendations {
     margin-top: 25px;
 }
