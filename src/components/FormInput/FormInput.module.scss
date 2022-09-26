@@ -1,0 +1,38 @@
+.form__input {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    padding: 10px 0;
+}
+
+.form__input label {
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    color: gray;
+}
+
+.form__input input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form__input input:invalid[focused="true"] {
+    border: 1px solid red;
+}
+
+.form__input span {
+    display: none;
+}
+
+.form__input input:invalid ~ span{
+    color:red;
+}
+
+.form__input input:invalid[data-focused="true"] ~ span{
+    display: block;
+    margin-top: 10px;
+}

@@ -3,14 +3,17 @@ import NavigationLink from '../UI/NavLink/NavigationLink';
 import logoSvg from '../../assets/icons/logo.svg';
 import styles from './Header.module.scss';
 import Search from '../UI/Search/Search';
-import { useAppDispatch } from '../../hooks/typedHooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/typedHooks';
 import { changeSearchQuery } from '../../redux/slices/searchQuerySlice';
 import debounce from 'lodash.debounce';
 import { useLocation } from 'react-router-dom';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
+import { changeAuthStatus } from '../../redux/slices/authSlice';
 
 
 const Header: React.FC = () => {
 
+    const { authorized, user } = useAppSelector(state => state.auth)
     const location = useLocation();
     const [searchQuery, setSearchQuery] = useState<string>("")
     const dispatch = useAppDispatch()
@@ -57,7 +60,28 @@ const Header: React.FC = () => {
                         : null
                 }
                 <div className={styles.login}>
-                    <NavigationLink to="/">LOG IN</NavigationLink>
+                    {
+                        authorized
+                            ?
+                            (
+                                <div
+                                    className={styles.logout}
+                                    onClick={() => dispatch(changeAuthStatus(null))}
+                                >
+                                    <FiLogOut />
+                                    <span>{user?.login}</span>
+                                </div>
+                            )
+                            :
+                            (
+                                <NavigationLink to="login">
+                                    <FiLogIn />
+                                    <span>LOG IN</span>
+                                </NavigationLink>
+                            )
+
+                    }
+
                 </div>
             </div>
         </header >

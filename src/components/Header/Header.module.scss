@@ -24,6 +24,7 @@
     width: 64px;
     height: 64px;
     background-color: white;
+    color:white;
     border-radius: 50%;
 }
 
@@ -47,7 +48,24 @@
 }
 
 .login {
+    color:white;
+    cursor: pointer;
+
+    a {
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        margin-left: 0.5rem;
+    }
+
     @media screen and (max-width: 900px){
         display: none;
     }
+}
+
+.logout {
+    display: flex;
+    align-items: center;
 }
