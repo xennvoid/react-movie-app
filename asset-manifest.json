@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-movie-app/static/css/main.66d91c52.css",
-    "main.js": "/react-movie-app/static/js/main.4e516edd.js",
+    "main.css": "/react-movie-app/static/css/main.91bf63c8.css",
+    "main.js": "/react-movie-app/static/js/main.ad632449.js",
     "static/media/movie-placeholder.png": "/react-movie-app/static/media/movie-placeholder.8b48f44269e82fc601a1.png",
     "static/media/instagram.svg": "/react-movie-app/static/media/instagram.8398ac473c185bd4e4b1f569b1d72778.svg",
     "static/media/logo.svg": "/react-movie-app/static/media/logo.53fad831236a85272a38117dcb01484b.svg",
@@ -9,11 +9,11 @@
     "index.html": "/react-movie-app/index.html",
     "static/media/facebook.svg": "/react-movie-app/static/media/facebook.dfd7fdf6045f3faf5ba86e853c6eeccf.svg",
     "static/media/youtube.svg": "/react-movie-app/static/media/youtube.a3081be02678110ebd777276088e1422.svg",
-    "main.66d91c52.css.map": "/react-movie-app/static/css/main.66d91c52.css.map",
-    "main.4e516edd.js.map": "/react-movie-app/static/js/main.4e516edd.js.map"
+    "main.91bf63c8.css.map": "/react-movie-app/static/css/main.91bf63c8.css.map",
+    "main.ad632449.js.map": "/react-movie-app/static/js/main.ad632449.js.map"
   },
   "entrypoints": [
-    "static/css/main.66d91c52.css",
-    "static/js/main.4e516edd.js"
+    "static/css/main.91bf63c8.css",
+    "static/js/main.ad632449.js"
   ]
 }
