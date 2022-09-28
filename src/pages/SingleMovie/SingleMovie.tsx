@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import MovieList from '../../components/MovieList/MovieList';
 import BackButton from '../../components/UI/BackButton/BackButton';
+import CardSkeleton from '../../components/UI/CardSkeleton/CardSkeleton';
 import { useGetMovieByIdQuery } from '../../redux/services/movieApi';
 import timeConvert from '../../utils/MinsToMinsAndHours';
 import styles from './SingleMovie.module.scss';
@@ -21,17 +22,25 @@ const SingleMovie: React.FC = () => {
 
     const releaseDate = new Date(`${movie?.release_date || movie?.first_air_date}`);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    })
+    const trailer = movie?.videos.results.find(movie => movie.type.toLowerCase() === 'trailer');
 
-    const trailer = movie?.videos.results.find(movie => movie.type.toLowerCase() === 'trailer')
+    const animationBlockRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        animationBlockRef.current?.classList.add(styles.animate);
+
+        const timeout = setTimeout(() => animationBlockRef.current?.classList.remove(styles.animate), 1000);
+
+        return () => {
+            clearTimeout(timeout);
+        }
+    }, [id])
 
     if (isLoading)
         return null;
 
     return (
-        <div className={styles.background} style={{ backgroundImage: `url(${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path})` }}>
+        <div ref={animationBlockRef} className={styles.background} style={{ backgroundImage: `url(${'https://image.tmdb.org/t/p/original' + movie?.backdrop_path})` }}>
             <div className="container">
                 <div className={styles.content}>
                     <BackButton onClick={() => navigate(-1)} />
@@ -76,7 +85,7 @@ const SingleMovie: React.FC = () => {
                         </div>
                     </div>
                     {
-                        movie?.videos?.results?.length != 0
+                        movie?.videos?.results?.length !== 0
                         &&
                         (<div className={styles.trailer}>
                             <iframe
@@ -89,21 +98,13 @@ const SingleMovie: React.FC = () => {
                         </div>)
                     }
                     <div className={styles.recommendations}>
+                        <h3 className={styles.recommendations_title}>
+                            Similar movies
+                        </h3>
                         {
-                            isFetching
-                                ? null
-                                :
-                                <>
-                                    <h3 className={styles.recommendations_title}>
-                                        Similar movies
-                                    </h3>
-                                    <MovieList listName="Similar" url={`${movieType}/${id}/similar`} movieType={movieType} simplified />
-
-                                    {/* <h3 className={styles.recommendations_title}>
-                                        Recommendations
-                                    </h3>
-                                    <MovieList listName="Recommendations" url={`${movieType}/${id}/recommendations`} movieType={movieType} simplified /> */}
-                                </>
+                            isFetching || isLoading
+                                ? <>{[...new Array(4)].map((_, i) => <CardSkeleton key={i} />)}</>
+                                : <MovieList listName="Similar" url={`${movieType}/${id}/similar`} movieType={movieType} simplified />
                         }
                     </div>
                 </div>

@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import Layout from './layout/Layout';
 import FullMovieList from './pages/FullMovieList/FullMovieList';
@@ -7,7 +8,13 @@ import Login from './pages/Login/Login';
 import SingleMovie from './pages/SingleMovie/SingleMovie';
 
 
-function App() {
+const App = () => {
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="App">
